@@ -2,16 +2,21 @@
 export default {
   data() {
     return {
-      
+      searchTerm:''
+    }
+  },
+  methods:{
+    onSearch(){
+      this.$emit('search', this.searchTerm);
     }
   }
-}
+};
 </script>
 
 <template>
-<h2>AppSearch</h2>
+
 <div class="searchbar">
-  <input type="text" placeholder="Cerca...">
+  <input type="text" v-model="searchTerm" @input="onSearch" placeholder="Cerca un film...">
   <button type="submit">INVIA</button>
 </div>
 </template>
