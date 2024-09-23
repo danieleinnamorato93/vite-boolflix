@@ -1,39 +1,42 @@
+
 <script>
 export default {
   data() {
     return {
-      searchTerm:''
-    }
+      searchTerm: '',
+    };
   },
-  methods:{
-    onSearch(){
-      this.$emit('search', this.searchTerm);
-    }
-  }
+  methods: {
+    onSearch() {
+      if (this.searchTerm) {
+        this.$emit('search', this.searchTerm); 
+      }
+    },
+  },
 };
 </script>
 
 <template>
-
-<div class="searchbar">
-  <input type="text" v-model="searchTerm" @input="onSearch" placeholder="Cerca un film...">
-  <button type="submit">INVIA</button>
-</div>
+  <div class="searchbar">
+    <input type="text" v-model="searchTerm" @keyup.enter="onSearch" placeholder="Cerca un film o serie TV..." />
+    <button @click="onSearch">Cerca</button>
+  </div>
 </template>
 
+
 <style lang="scss" scoped>
-  .search-bar {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 25px;
-      overflow: hidden;
-    }
-    button {
-      padding: 1px;
-      background-color: black;
-      color: red;
-      font-weight: bold;
-    }
+.searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-left: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
 </style>
